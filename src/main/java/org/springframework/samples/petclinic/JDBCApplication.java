@@ -57,19 +57,39 @@ public class JDBCApplication {
 //				statement.executeUpdate(sql);
 				
 				//Ejercicio 4
-				String nombre = getNombre("nue");
-				sql = "Select * From owners where first_name like ? or last_name = ?";
+//				String nombre = getNombre("nue");
+//				sql = "Select * From owners where first_name like ? or last_name = ?";
+//				preStatament = connection.prepareStatement(sql);
+//				preStatament.setString(1, nombre);
+//				preStatament.setString(2, nombre);
+//				rs = preStatament.executeQuery();
+//				while(rs.next()) {
+//					System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " su dirección " + rs.getString(4) + " de la ciudad " + rs.getString(5) + " y su teléfono " + rs.getString(6));
+////					System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " su dirección " + rs.getString("address") + " de la ciudad " + rs.getString("city") + " y su teléfono " + rs.getString("telephone"));
+//				}
+//				rs.close();
+				//Ejercicio 5
+				String nombre = "Ana";
+				String apellido = "Benítez";
+				String dir = "Costa y llobera";
+				String ciudad = "Sevilla";
+				String tlf = "666999888";
+				sql = "Insert into owners (first_name, last_name, address, city, telephone) values (?, ?, ?, ?, ?) ";
 				preStatament = connection.prepareStatement(sql);
 				preStatament.setString(1, nombre);
-				preStatament.setString(2, nombre);
-				rs = preStatament.executeQuery();
+				preStatament.setString(2, apellido);
+				preStatament.setString(3, dir);
+				preStatament.setString(4, ciudad);
+				preStatament.setString(5, tlf);
+				preStatament.executeUpdate();
+				
+				sql = "Select * From owners";
+				rs = statement.executeQuery(sql);
 				while(rs.next()) {
 					System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + " su dirección " + rs.getString(4) + " de la ciudad " + rs.getString(5) + " y su teléfono " + rs.getString(6));
 //					System.out.println(rs.getInt("id") + " " + rs.getString("first_name") + " " + rs.getString("last_name") + " su dirección " + rs.getString("address") + " de la ciudad " + rs.getString("city") + " y su teléfono " + rs.getString("telephone"));
 				}
 				rs.close();
-			
-			
 			
 			
 		
